@@ -21,6 +21,7 @@ namespace Tokenization.Model.BattleFlow
         public async Task<ActionSelection> DetermineNextStepAsync()
         {
             BattleToken token = await context.View.InputTokenAsync(context, doer);
+            Console.WriteLine($"{token.Property.Name}が選択されました");
             return new ActionSelection(context, doer, token);
         }
     }

@@ -17,7 +17,7 @@ namespace Tokenization.Model.Objects.Implementations
             "Nac.Sample.Skill.SampleMove"
         };
 
-        public string Image => "";
+        public string Image => "Textures/Token1.png";
 
         public string ProfileImage => "";
     }

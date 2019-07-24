@@ -5,6 +5,7 @@ using System.Reactive;
 using System.Reactive.Subjects;
 using System.Text;
 using System.Threading.Tasks;
+using Altseed.Reactive;
 using asd;
 
 namespace Tokenization.View.Objects
@@ -19,6 +20,7 @@ namespace Tokenization.View.Objects
         {
             Model = model;
             Texture = Engine.Graphics.CreateTexture2D(model.Property.Image);
+            this.SetCenterPosition(Altseed.Reactive.CenterPosition.CenterCenter);
         }
 
         public Model.Objects.BattleToken Model { get; }

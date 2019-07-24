@@ -8,9 +8,24 @@ namespace Tokenization.Model.BattleFlow
 {
     class BattleProcess
     {
-        public Task RunAsync()
+        private readonly BattleContext context;
+
+        public BattleProcess(BattleContext context)
         {
-            return Task.CompletedTask;
+            this.context = context;
+        }
+
+        public async Task RunAsync()
+        {
+            var activeTurn = new ActiveTurn();
+            while (true)
+            {
+                var commands = await activeTurn.RunAsync(context, context.LocalPlayer);
+                foreach (var primitive in commands.Primitives)
+                {
+                    await primitive.RunAsync(context);
+                }
+            }
         }
     }
 }

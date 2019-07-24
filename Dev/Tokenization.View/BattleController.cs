@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reactive.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Tokenization.Model.BattleFlow;
@@ -21,11 +22,19 @@ namespace Tokenization.View
 
         public BattleController(BattleContext context)
         {
+            var random = new Random();
+            Layer = new Layer2D();
+            Scene = new Scene();
+
             foreach (var token in context.LocalPlayer.Tokens.Concat(context.RemotePlayer.Tokens))
             {
                 var obj = new BattleTokenView(token);
                 Tokens[token.Index] = obj;
                 Layer.AddObject(obj);
+
+                var x = (random.NextDouble() * 2 - 1) * 300 + 640;
+                var y = (random.NextDouble() * 2 - 1) * 300 + 320;
+                obj.Position = new Vector2DF((float)x, (float)y);
             }
 
             Scene.AddLayer(Layer);
@@ -51,9 +60,12 @@ namespace Tokenization.View
             throw new NotImplementedException();
         }
 
-        public Task<BattleToken> InputTokenAsync(BattleContext context, Player doer)
+        public async Task<BattleToken> InputTokenAsync(BattleContext context, Player doer)
         {
-            throw new NotImplementedException();
+            Console.WriteLine("トークン選択");
+            var clickStreams = doer.Tokens.Join(Tokens, i => i.Index, o => o.Key, (i, o) => o)
+                .Select(x => x.Value.OnClicked.Select(u => x.Value.Model));
+            return await Observable.Merge(clickStreams).Take(1);
         }
 
         public Task ShowMove(BattleToken token, Vector2 distance)
