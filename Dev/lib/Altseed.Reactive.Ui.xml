@@ -1,0 +1,562 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Altseed.Reactive.Ui</name>
+    </assembly>
+    <members>
+        <member name="T:Altseed.Reactive.Ui.ChoiceList.LinearChoiceList`1">
+            <summary>
+            一方向に並ぶ選択肢に関する操作を提供するクラス。
+            </summary>
+            <typeparam name="TChoice">選択肢の型。</typeparam>
+        </member>
+        <member name="F:Altseed.Reactive.Ui.ChoiceList.LinearChoiceList`1.Disabled">
+            <summary>
+            選択肢が0個の場合に選択されている位置のインデックス。
+            </summary>
+        </member>
+        <member name="P:Altseed.Reactive.Ui.ChoiceList.LinearChoiceList`1.Choices">
+            <summary>
+            登録されている選択肢のコレクション。
+            </summary>
+        </member>
+        <member name="P:Altseed.Reactive.Ui.ChoiceList.LinearChoiceList`1.Size">
+            <summary>
+            選択肢の項目数を取得または設定します。
+            </summary>
+        </member>
+        <member name="P:Altseed.Reactive.Ui.ChoiceList.LinearChoiceList`1.SelectedIndex">
+            <summary>
+            現在選択されているインデックスを取得または設定します。
+            </summary>
+            <remarks>こちらで選択されているインデックスを操作すると、ループやスキップを考慮しません。</remarks>
+        </member>
+        <member name="P:Altseed.Reactive.Ui.ChoiceList.LinearChoiceList`1.Loop">
+            <summary>
+            選択肢間の移動操作をループできるようにするかどうかの真偽値を取得または設定します。
+            </summary>
+        </member>
+        <member name="P:Altseed.Reactive.Ui.ChoiceList.LinearChoiceList`1.SelectedChoice">
+            <summary>
+            現在選択されている選択肢を取得します。
+            </summary>
+        </member>
+        <member name="P:Altseed.Reactive.Ui.ChoiceList.LinearChoiceList`1.DisabledIndex">
+            <summary>
+            何も選択されていないときに <see cref="P:Altseed.Reactive.Ui.ChoiceList.LinearChoiceList`1.SelectedIndex"/> に設定される値。
+            </summary>
+        </member>
+        <member name="M:Altseed.Reactive.Ui.ChoiceList.LinearChoiceList`1.#ctor">
+            <summary>
+            初期値を使用して、LinearChoiceList の新しいインスタンスを生成します。
+            </summary>
+        </member>
+        <member name="M:Altseed.Reactive.Ui.ChoiceList.LinearChoiceList`1.AddChoice(`0,System.Boolean)">
+            <summary>
+            選択肢を追加します。
+            </summary>
+            <param name="choice">追加する選択肢。</param>
+            <param name="skipped">この選択肢をスキップするかどうかを表す真偽値。</param>
+        </member>
+        <member name="M:Altseed.Reactive.Ui.ChoiceList.LinearChoiceList`1.RemoveChoice(`0)">
+            <summary>
+            選択肢を削除します。
+            </summary>
+            <param name="choice">削除する選択肢。</param>
+            <returns>選択肢が削除されたかどうかを表す真偽値。追加されていないものを削除しようとすると<c>false</c>になります。</returns>
+        </member>
+        <member name="M:Altseed.Reactive.Ui.ChoiceList.LinearChoiceList`1.InsertChoice(System.Int32,`0,System.Boolean)">
+            <summary>
+            選択肢を挿入します。
+            </summary>
+            <param name="index">挿入する位置。</param>
+            <param name="choice">挿入する選択肢。</param>
+            <param name="skipped">この選択肢がスキップするかどうかを表す真偽値。</param>
+        </member>
+        <member name="M:Altseed.Reactive.Ui.ChoiceList.LinearChoiceList`1.ClearChoice">
+            <summary>
+            選択肢をクリアします。
+            </summary>
+        </member>
+        <member name="M:Altseed.Reactive.Ui.ChoiceList.LinearChoiceList`1.SelectPreviousIndex">
+            <summary>
+            選択中のインデックスをひとつ前へ移動します。
+            </summary>
+            <returns>移動に成功したか</returns>
+        </member>
+        <member name="M:Altseed.Reactive.Ui.ChoiceList.LinearChoiceList`1.SelectNextIndex">
+            <summary>
+            選択中のインデックスをひとつ次へ移動します。
+            </summary>
+        </member>
+        <member name="M:Altseed.Reactive.Ui.ChoiceList.LinearChoiceList`1.SetSelectedChoice(`0)">
+            <summary>
+            選択中の選択肢を強制的に変更します。
+            </summary>
+            <param name="choice">新しく選択する選択肢。</param>
+            <returns>選択肢が変更されたかどうかを表す真偽値。</returns>
+        </member>
+        <member name="T:Altseed.Reactive.Ui.Cursor.CursorComponent">
+            <summary>
+            オブジェクトが他のオブジェクトに追従するようにするコンポーネント。
+            </summary>
+        </member>
+        <member name="M:Altseed.Reactive.Ui.Cursor.CursorComponent.MoveTo(asd.Object2D)">
+            <summary>
+            このカーソルの追従するオブジェクトを変更します。
+            </summary>
+            <param name="target">追従する先となるオブジェクト。</param>
+            <remarks>カーソル オブジェクトは追従先のオブジェクトの子オブジェクトとなります。</remarks>
+        </member>
+        <member name="M:Altseed.Reactive.Ui.Cursor.CursorComponent.AnimateMove">
+            <summary>
+            オーバーライドして、指定したオブジェクトへ移動するアニメーションを実装できます。
+            </summary>
+            <remarks>追従先のオブジェクトの子オブジェクトとなるため、(0, 0)の位置が追従先のオブジェクトの位置となります。</remarks>
+        </member>
+        <member name="T:Altseed.Reactive.Ui.Cursor.EasingCursorComponent">
+            <summary>
+            他のオブジェクトに滑らかに追従するカーソルを描画するオブジェクト。
+            </summary>
+        </member>
+        <member name="P:Altseed.Reactive.Ui.Cursor.EasingCursorComponent.Easing">
+            <summary>
+            アニメーションに用いるイージングを表すインスタンスを取得または設定します。
+            </summary>
+        </member>
+        <member name="P:Altseed.Reactive.Ui.Cursor.EasingCursorComponent.EasingDurationFrame">
+            <summary>
+            アニメーションに要する時間(フレーム)を取得または設定します。
+            </summary>
+        </member>
+        <member name="M:Altseed.Reactive.Ui.Cursor.EasingCursorComponent.#ctor">
+            <summary>
+            初期値を使用して、EasingCursor の新しいインスタンスを生成します。
+            </summary>
+        </member>
+        <member name="M:Altseed.Reactive.Ui.Cursor.EasingCursorComponent.AnimateMove">
+            <summary>
+            オーバーライドして、指定したオブジェクトへ移動するアニメーションを実装できます。
+            </summary>
+        </member>
+        <member name="T:Altseed.Reactive.Ui.IActivatableSelectionItem">
+            <summary>
+            カーソルが当たると状態を変える選択肢オブジェクトのインターフェース。
+            </summary>
+        </member>
+        <member name="M:Altseed.Reactive.Ui.IActivatableSelectionItem.Activate">
+            <summary>
+            この選択肢を選択状態にします。
+            </summary>
+        </member>
+        <member name="M:Altseed.Reactive.Ui.IActivatableSelectionItem.Disactivate">
+            <summary>
+            この選択肢を非選択状態にします。
+            </summary>
+        </member>
+        <member name="T:Altseed.Reactive.Ui.AsIsLayout">
+            <summary>
+            オブジェクトの配置を変えないレイアウト クラス。
+            </summary>
+        </member>
+        <member name="M:Altseed.Reactive.Ui.AsIsLayout.AddItem(asd.Object2D)">
+            <summary>
+            2Dオブジェクトをこのレイアウトの末尾に配置します。
+            </summary>
+            <param name="item">配置する2Dオブジェクト。</param>
+        </member>
+        <member name="M:Altseed.Reactive.Ui.AsIsLayout.ClearItem">
+            <summary>
+            このレイアウトから全ての要素を取り除きます。
+            </summary>
+        </member>
+        <member name="M:Altseed.Reactive.Ui.AsIsLayout.InsertItem(System.Int32,asd.Object2D)">
+            <summary>
+            2Dオブジェクトをこのレイアウト上に挿入します。
+            </summary>
+            <param name="index">挿入する位置のインデックス。</param>
+            <param name="item">挿入する2Dオブジェクト。</param>
+        </member>
+        <member name="M:Altseed.Reactive.Ui.AsIsLayout.RemoveItem(asd.Object2D)">
+            <summary>
+            2Dオブジェクトをこのレイアウトから取り除きます。
+            </summary>
+            <param name="item">取り除く2Dオブジェクト。</param>
+        </member>
+        <member name="T:Altseed.Reactive.Ui.Layouter">
+            <summary>
+            オブジェクトを何らかの配置に並べる機能を提供します。
+            </summary>
+        </member>
+        <member name="M:Altseed.Reactive.Ui.Layouter.AddItem(asd.Object2D)">
+            <summary>
+            2Dオブジェクトをこのレイアウトの末尾に配置します。
+            </summary>
+            <param name="item">配置する2Dオブジェクト。</param>
+        </member>
+        <member name="M:Altseed.Reactive.Ui.Layouter.InsertItem(System.Int32,asd.Object2D)">
+            <summary>
+            2Dオブジェクトをこのレイアウト上に挿入します。
+            </summary>
+            <param name="index">挿入する位置のインデックス。</param>
+            <param name="item">挿入する2Dオブジェクト。</param>
+        </member>
+        <member name="M:Altseed.Reactive.Ui.Layouter.RemoveItem(asd.Object2D)">
+            <summary>
+            2Dオブジェクトをこのレイアウトから取り除きます。
+            </summary>
+            <param name="item">取り除く2Dオブジェクト。</param>
+        </member>
+        <member name="M:Altseed.Reactive.Ui.Layouter.ClearItem">
+            <summary>
+            このレイアウトから全ての要素を取り除きます。
+            </summary>
+        </member>
+        <member name="T:Altseed.Reactive.Ui.LinearPanel">
+            <summary>
+            オブジェクトを一直線に配置するレイアウト クラス。
+            </summary>
+            <remarks>このクラスにオブジェクトを登録すると、同時にこのオブジェクトの子オブジェクトとなります。</remarks>
+        </member>
+        <member name="P:Altseed.Reactive.Ui.LinearPanel.ItemInfo.Object">
+            <summary>
+            レイアウトされているオブジェクトを取得します。
+            </summary>
+        </member>
+        <member name="P:Altseed.Reactive.Ui.LinearPanel.ItemInfo.Cancellation">
+            <summary>
+            Disposeすることでこのオブジェクトのアニメーションを停止できます。
+            </summary>
+        </member>
+        <member name="P:Altseed.Reactive.Ui.LinearPanel.ItemInfo.LayoutedPosition">
+            <summary>
+            このオブジェクトがレイアウトされている位置を取得します。
+            アニメーション中でも正しい位置を取得できます。
+            </summary>
+        </member>
+        <member name="P:Altseed.Reactive.Ui.LinearPanel.OnLayoutChanged">
+            <summary>
+            レイアウトされる2Dオブジェクトの配置が更新されたときに通知するイベントを取得します。
+            </summary>
+        </member>
+        <member name="P:Altseed.Reactive.Ui.LinearPanel.ObjectsNotification">
+            <summary>
+            レイアウトされる2Dオブジェクトのコレクションが変更されたときに通知するインターフェースを取得します。
+            </summary>
+        </member>
+        <member name="P:Altseed.Reactive.Ui.LinearPanel.Items">
+            <summary>
+            レイアウトされる2Dオブジェクトのコレクションを取得します。
+            </summary>
+        </member>
+        <member name="P:Altseed.Reactive.Ui.LinearPanel.StartingOffset">
+            <summary>
+            レイアウトの開始位置を取得または設定します。
+            </summary>
+        </member>
+        <member name="P:Altseed.Reactive.Ui.LinearPanel.ItemSpan">
+            <summary>
+            要素どうしの間の間隔を取得または設定します。
+            </summary>
+        </member>
+        <member name="P:Altseed.Reactive.Ui.LinearPanel.GetNewItemPosition">
+            <summary>
+            要素の配置が変わるときのアニメーションを <see cref="T:System.IObservable`1"/> の
+            インスタンスとして取得するデリゲートを取得または設定します。
+            </summary>
+        </member>
+        <member name="M:Altseed.Reactive.Ui.LinearPanel.#ctor">
+            <summary>
+            LinearPanelクラスを初期化します。
+            </summary>
+        </member>
+        <member name="M:Altseed.Reactive.Ui.LinearPanel.SetEasingBehaviorUp(Altseed.Reactive.Easings.IEasing,System.Int32)">
+            <summary>
+            要素の移動を滑らかなアニメーションで表現するように準備します。
+            </summary>
+            <param name="start">アニメーションの開始速度。</param>
+            <param name="end">アニメーションの終了速度。</param>
+            <param name="time">アニメーションにかけるフレーム数。</param>
+        </member>
+        <member name="M:Altseed.Reactive.Ui.LinearPanel.AddItem(asd.Object2D)">
+            <summary>
+            2Dオブジェクトをこのレイアウトの末尾に配置します。
+            </summary>
+            <param name="item">配置する2Dオブジェクト。</param>
+        </member>
+        <member name="M:Altseed.Reactive.Ui.LinearPanel.InsertItem(System.Int32,asd.Object2D)">
+            <summary>
+            2Dオブジェクトをこのレイアウト上に挿入します。
+            </summary>
+            <param name="index">挿入する位置のインデックス。</param>
+            <param name="item">挿入する2Dオブジェクト。</param>
+        </member>
+        <member name="M:Altseed.Reactive.Ui.LinearPanel.RemoveItem(asd.Object2D)">
+            <summary>
+            2Dオブジェクトをこのレイアウトから取り除きます。
+            </summary>
+            <param name="item">取り除く2Dオブジェクト。</param>
+        </member>
+        <member name="M:Altseed.Reactive.Ui.LinearPanel.ClearItem">
+            <summary>
+            このレイアウトから全ての要素を取り除きます。
+            </summary>
+        </member>
+        <member name="M:Altseed.Reactive.Ui.MessageWindow.TalkMessageAsync(System.String[],System.Threading.CancellationToken)">
+            <summary>
+            メッセージ文字列の配列を表示します。読み進める操作が入力されるたびに次の要素を表示します。
+            </summary>
+            <param name="message">表示するメッセージの配列。</param>
+            <param name="ct">キャンセル トークン。</param>
+            <returns></returns>
+        </member>
+        <member name="M:Altseed.Reactive.Ui.MessageWindow.TalkMessageWithoutReadAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            メッセージ文字列を表示します。
+            </summary>
+            <param name="message">表示するメッセージ。</param>
+            <param name="ct">キャンセル トークン。</param>
+            <returns></returns>
+        </member>
+        <member name="M:Altseed.Reactive.Ui.MessageWindow.ShowMessage(System.String)">
+            <summary>
+            文字列をウィンドウに表示します。タイプライター風のアニメーションをしません。
+            </summary>
+            <param name="message">表示するメッセージ。</param>
+        </member>
+        <member name="T:Altseed.Reactive.Ui.ScrollLayer">
+            <summary>
+            注目している範囲が特定の範囲に含まれるように、レイヤーのスクロールを制御するクラス。
+            </summary>
+        </member>
+        <member name="M:Altseed.Reactive.Ui.ScrollLayer.#ctor">
+            <summary>
+            ScrollLayer クラスを初期化します。
+            </summary>
+        </member>
+        <member name="M:Altseed.Reactive.Ui.ScrollLayer.SetScrollPosition(asd.RectI,asd.RectF)">
+            <summary>
+            カメラで映す範囲を強制的に変更します。
+            </summary>
+            <param name="initialCameraSrc">カメラが映す範囲。</param>
+            <param name="initialSeeingArea">注目する範囲。</param>
+        </member>
+        <member name="M:Altseed.Reactive.Ui.ScrollLayer.SubscribeSeeingArea(System.IObservable{asd.RectF})">
+            <summary>
+            注目している範囲が移動したときに通知するイベントを登録します。
+            </summary>
+            <param name="onSeeingAreaChanged">注目している範囲が移動したときに通知するイベント。</param>
+        </member>
+        <member name="M:Altseed.Reactive.Ui.ScrollLayer.SetEasingBehaviorUp(Altseed.Reactive.Easings.IEasing,System.Int32)">
+            <summary>
+            スクロールを滑らかに行うように準備します。
+            </summary>
+            <param name="start">アニメーションの開始速度。</param>
+            <param name="end">アニメーションの終了速度。</param>
+            <param name="time">アニメーションにかける時間。</param>
+        </member>
+        <member name="M:Altseed.Reactive.Ui.ScrollLayer.GetJut(asd.RectF,asd.RectF)">
+            <summary>
+            矩形のはみだしを計算します。
+            </summary>
+            <param name="inner">内側の矩形。</param>
+            <param name="outer">外側の矩形。</param>
+            <returns>はみ出しが最小になるような補正値。</returns>
+        </member>
+        <member name="T:Altseed.Reactive.Ui.SelectorFacade`1">
+            <summary>
+            選択肢UIを提供するクラス。
+            </summary>
+            <typeparam name="TChoice"></typeparam>
+        </member>
+        <member name="P:Altseed.Reactive.Ui.SelectorFacade`1.Cursor">
+            <summary>
+            この選択肢UIにカーソルを表示するオブジェクトを取得または設定します。
+            </summary>
+        </member>
+        <member name="P:Altseed.Reactive.Ui.SelectorFacade`1.CursorComponent">
+            <summary>
+            この選択肢UIのカーソルを制御するコンポーネントを取得または設定します。
+            </summary>
+        </member>
+        <member name="P:Altseed.Reactive.Ui.SelectorFacade`1.SelectedIndex">
+            <summary>
+            この選択肢UIで現在選択されているインデックスを取得します。
+            </summary>
+        </member>
+        <member name="P:Altseed.Reactive.Ui.SelectorFacade`1.SelectedItem">
+            <summary>
+            この選択肢UIで現在選択されているオブジェクトを取得します。
+            </summary>
+        </member>
+        <member name="P:Altseed.Reactive.Ui.SelectorFacade`1.SelectedChoice">
+            <summary>
+            この選択肢UIで現在選択されている選択肢を取得します。
+            </summary>
+        </member>
+        <member name="P:Altseed.Reactive.Ui.SelectorFacade`1.ItemSpan">
+            <summary>
+            この選択肢UIの要素同士の間隔を取得又は設定します。
+            </summary>
+        </member>
+        <member name="P:Altseed.Reactive.Ui.SelectorFacade`1.OnSelectionChanged">
+            <summary>
+            選択が変更されたことを通知するストリーム。
+            </summary>
+        </member>
+        <member name="M:Altseed.Reactive.Ui.SelectorFacade`1.AddChoice(`0,asd.Object2D,System.Boolean)">
+            <summary>
+            この選択肢UIに選択肢を追加します。
+            </summary>
+            <param name="choice">追加する選択肢。</param>
+            <param name="obj">選択肢の内容を表示するオブジェクト。</param>
+            <param name="skipped">この選択肢がスキップされるかどうかを表す真偽値。</param>
+        </member>
+        <member name="M:Altseed.Reactive.Ui.SelectorFacade`1.InsertChoice(System.Int32,`0,asd.Object2D,System.Boolean)">
+            <summary>
+            この選択肢UIに選択肢を挿入します。
+            </summary>
+            <param name="index">選択する位置。</param>
+            <param name="choice">挿入する選択肢。</param>
+            <param name="obj">選択肢の内容を表示するオブジェクト。</param>
+            <param name="skipped">この選択肢がスキップされるかどうかを表す真偽値。</param>
+        </member>
+        <member name="M:Altseed.Reactive.Ui.SelectorFacade`1.RemoveChoice(`0)">
+            <summary>
+            この選択肢UIから選択肢を削除します。
+            </summary>
+            <param name="choice">削除する選択肢。</param>
+            <returns>選択肢が削除されたかどうか。追加されていないインスタンスを指定したときに<c>false</c>となります。</returns>
+        </member>
+        <member name="M:Altseed.Reactive.Ui.SelectorFacade`1.ClearChoice">
+            <summary>
+            この選択肢UIから選択肢をクリアします。
+            </summary>
+        </member>
+        <member name="M:Altseed.Reactive.Ui.SelectorFacade`1.SelectPreviousIndex">
+            <summary>
+            前の選択肢に移動します。
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Altseed.Reactive.Ui.SelectorFacade`1.SelectNextIndex">
+            <summary>
+            次の選択肢に移動します。
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Altseed.Reactive.Ui.SelectorFacade`1.SetSelectedIndex(System.Int32)">
+            <summary>
+            指定した選択肢を選択した状態へ変更します。
+            </summary>
+            <param name="index">選択肢のインデックス。</param>
+        </member>
+        <member name="M:Altseed.Reactive.Ui.SelectorFacade`1.BindController``1(Altseed.Reactive.Input.Controller{``0},``0,``0)">
+            <summary>
+            この選択肢UIをコントローラーで操作できるようにします。
+            </summary>
+            <typeparam name="TControl">コントローラーの操作を表す型。</typeparam>
+            <param name="controller">この選択肢UIを操作するコントローラー。</param>
+            <param name="controlPrev">前に移動する操作を表す値。</param>
+            <param name="controlNext">次に移動する操作を表す値。</param>
+        </member>
+        <member name="M:Altseed.Reactive.Ui.SelectorFacade`1.BindKeyboard(asd.Keys,asd.Keys)">
+            <summary>
+            この選択肢UIをキーボードで操作できるようにします。
+            </summary>
+            <param name="keyToPrev">前に移動するキー。</param>
+            <param name="keyToNext">次に移動するキー。</param>
+        </member>
+        <member name="T:Altseed.Reactive.Ui.TextWindow.MarkupTextViewer">
+            <summary>
+            エスケープシーケンスによって文字列スタイルを操作しながら、文字列の表示を制御するクラス。
+            </summary>
+        </member>
+        <member name="F:Altseed.Reactive.Ui.TextWindow.MarkupTextViewer.DefaultSetting">
+            <summary>
+            文字列表示の基本となるスタイル設定。
+            </summary>
+        </member>
+        <member name="M:Altseed.Reactive.Ui.TextWindow.MarkupTextViewer.#ctor(asd.Font)">
+            <summary>
+            フォント設定を指定して、MarkupTextViewerの新しいインスタンスを初期化します。
+            </summary>
+            <param name="font">使用するフォント。</param>
+        </member>
+        <member name="M:Altseed.Reactive.Ui.TextWindow.MarkupTextViewer.ShowStyledText(System.String)">
+            <summary>
+            エスケープシーケンスでスタイル付けされた文字列を表示します。
+            </summary>
+            <param name="text">エスケープシーケンスでスタイル付けされた文字列。</param>
+            <returns>表示が終わると完了するタスク。</returns>
+        </member>
+        <member name="T:Altseed.Reactive.Ui.TextSetting">
+            <summary>
+            テキストの制御設定を保持する構造体。
+            </summary>
+        </member>
+        <member name="F:Altseed.Reactive.Ui.TextSetting.TextColor">
+            <summary>
+            テキストの色。
+            </summary>
+        </member>
+        <member name="F:Altseed.Reactive.Ui.TextSetting.TalkSpeed">
+            <summary>
+            テキストを表示する速度。
+            </summary>
+        </member>
+        <member name="F:Altseed.Reactive.Ui.TextSetting.NewLine">
+            <summary>
+            このテキストの前に改行をするかどうか。
+            </summary>
+        </member>
+        <member name="F:Altseed.Reactive.Ui.TextSetting.NewPage">
+            <summary>
+            このテキストの前に改ページをするかどうか。
+            </summary>
+        </member>
+        <member name="M:Altseed.Reactive.Ui.TextSetting.WithNewLine">
+            <summary>
+            改行を設定し、それ以外はこのインスタンスと同じ設定を返します。
+            </summary>
+            <returns>改行を設定されたインスタンス。</returns>
+        </member>
+        <member name="M:Altseed.Reactive.Ui.TextSetting.WithNewPage">
+            <summary>
+            改ページを設定し、それ以外はこのインスタンスと同じ設定を返します。
+            </summary>
+            <returns>改ページを設定されたインスタンス。</returns>
+        </member>
+        <member name="M:Altseed.Reactive.Ui.TextSetting.WithColor(asd.Color)">
+            <summary>
+            色を設定し、それ以外はこのインスタンスと同じ設定を返します。
+            </summary>
+            <param name="color">新しい色。</param>
+            <returns>色を設定されたインスタンス。</returns>
+        </member>
+        <member name="M:Altseed.Reactive.Ui.TextSetting.WithSpeed(System.Single)">
+            <summary>
+            テキストを表示する速度を設定し、それ以外はこのインスタンスと同じ設定を返します。
+            </summary>
+            <param name="speed">設定する速度。</param>
+            <returns>テキストを表示する速度を設定されたインスタンス。</returns>
+        </member>
+        <member name="T:Altseed.Reactive.Ui.TextViewer">
+            <summary>
+            テキスト表示を制御する機能を提供します。
+            </summary>
+        </member>
+        <member name="M:Altseed.Reactive.Ui.TextViewer.#ctor(asd.Font)">
+            <summary>
+            TextViewerの新しいインスタンスを初期化します。
+            </summary>
+        </member>
+        <member name="M:Altseed.Reactive.Ui.TextViewer.ShowTextAsync(System.String,Altseed.Reactive.Ui.TextSetting)">
+            <summary>
+            文字列を表示します。
+            </summary>
+            <param name="text">表示する文字列。</param>
+            <param name="setting">文字列の表示方法。</param>
+        </member>
+    </members>
+</doc>

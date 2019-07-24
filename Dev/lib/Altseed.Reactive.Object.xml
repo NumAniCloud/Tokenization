@@ -1,0 +1,224 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Altseed.Reactive.Object</name>
+    </assembly>
+    <members>
+        <member name="M:Altseed.Reactive.Object.Helper.AddTo(System.IDisposable,Altseed.Reactive.Object.IDisposer)">
+            <summary>
+            この IDisposable を、指定したインスタンスが破棄されるときに破棄するよう設定します。
+            </summary>
+            <param name="disposable">破棄する IDisposable のインスタンス。</param>
+            <param name="disposer">IDisposable のインスタンスを紐付ける IDisposer。</param>
+        </member>
+        <member name="M:Altseed.Reactive.Object.IDisposer.AddDisposable(System.IDisposable)">
+            <summary>
+            このオブジェクトが破棄されるときに一緒に破棄されるインスタンスを設定します
+            </summary>
+            <param name="resource">このオブジェクトが破棄されるときに一緒に破棄されるインスタンス。</param>
+        </member>
+        <member name="T:Altseed.Reactive.Object.INotifyUpdated">
+            <summary>
+            更新されたときにイベントを発行するインターフェース。
+            </summary>
+        </member>
+        <member name="P:Altseed.Reactive.Object.INotifyUpdated.OnUpdatedEvent">
+            <summary>
+            このオブジェクトシステムのインスタンスが更新されたときに値が流れるイベント。
+            値として Engine.DeltaTime が流れます。
+            </summary>
+        </member>
+        <member name="T:Altseed.Reactive.Object.ReactiveLayer2D">
+            <summary>
+            特定のタイミングでイベントを発行する2Dレイヤー。
+            </summary>
+        </member>
+        <member name="P:Altseed.Reactive.Object.ReactiveLayer2D.OnAddedEvent">
+            <summary>
+            レイヤーに追加された時に通知するイベントを取得します。レイヤーが破棄されたとき完了します。
+            </summary>
+        </member>
+        <member name="P:Altseed.Reactive.Object.ReactiveLayer2D.OnRemovedEvent">
+            <summary>
+            レイヤーから削除された時に通知するイベントを取得します。レイヤーが破棄されたとき完了します。
+            </summary>
+        </member>
+        <member name="P:Altseed.Reactive.Object.ReactiveLayer2D.OnUpdatingEvent">
+            <summary>
+            更新される直前に発行されるイベント。破棄されたとき完了します。
+            値として何個目のイベントかのインデックスが流れます。
+            </summary>
+        </member>
+        <member name="P:Altseed.Reactive.Object.ReactiveLayer2D.OnUpdatedEvent">
+            <summary>
+            更新された直後に発行されるイベント。破棄されたとき完了します。
+            値として何個目のイベントかのインデックスが流れます。
+            </summary>
+        </member>
+        <member name="P:Altseed.Reactive.Object.ReactiveLayer2D.OnDisposeEvent">
+            <summary>
+            このレイヤーが破棄されたときに発行されるイベント。発行されると同時に完了します。
+            </summary>
+        </member>
+        <member name="M:Altseed.Reactive.Object.ReactiveLayer2D.AddDisposable(System.IDisposable)">
+            <summary>
+            このオブジェクトが破棄されるときに一緒に破棄されるインスタンスを設定します
+            </summary>
+            <param name="resource">このオブジェクトが破棄されるときに一緒に破棄されるインスタンス。</param>
+        </member>
+        <member name="T:Altseed.Reactive.Object.ReactiveScene">
+            <summary>
+            特定のタイミングでイベントを発行するシーン。
+            </summary>
+        </member>
+        <member name="P:Altseed.Reactive.Object.ReactiveScene.OnRegisteredEvent">
+            <summary>
+            シーン遷移にて、このシーンがエンジンに登録されたタイミングで発行されるイベント。このシーンが破棄されると完了します。
+            </summary>
+        </member>
+        <member name="P:Altseed.Reactive.Object.ReactiveScene.OnStartUpdatingEvent">
+            <summary>
+            シーン遷移にて、このシーンの更新が始まるタイミングで発行されるイベント。このシーンが破棄されると完了します。
+            </summary>
+        </member>
+        <member name="P:Altseed.Reactive.Object.ReactiveScene.OnTransitionFinishedEvent">
+            <summary>
+            シーン遷移にて、このシーンへの遷移が完了したタイミングで発行されるイベント。このシーンが破棄されると完了します。
+            </summary>
+        </member>
+        <member name="P:Altseed.Reactive.Object.ReactiveScene.OnTransitionBeginEvent">
+            <summary>
+            シーン遷移にて、このシーンからの遷移が開始したタイミングで発行されるイベント。このシーンが破棄されると完了します。
+            </summary>
+        </member>
+        <member name="P:Altseed.Reactive.Object.ReactiveScene.OnStopUpdatingEvent">
+            <summary>
+            シーン遷移にて、このシーンの更新が止まるタイミングで発行されるイベント。このシーンが破棄されると完了します。
+            </summary>
+        </member>
+        <member name="P:Altseed.Reactive.Object.ReactiveScene.OnUnregisteredEvent">
+            <summary>
+            シーン遷移にて、このシーンがエンジンから登録解除されたタイミングで発行されるイベント。このシーンが破棄されると完了します。
+            </summary>
+        </member>
+        <member name="P:Altseed.Reactive.Object.ReactiveScene.OnUpdatedEvent">
+            <summary>
+            更新された直後に発行されるイベント。このシーンが破棄されると完了します。
+            値として何個目のイベントかのインデックスが流れます。
+            </summary>
+        </member>
+        <member name="P:Altseed.Reactive.Object.ReactiveScene.OnUpdatingEvent">
+            <summary>
+            更新される直前に発行されるイベント。このシーンが破棄されると完了します。
+            値として何個目のイベントかのインデックスが流れます。
+            </summary>
+        </member>
+        <member name="P:Altseed.Reactive.Object.ReactiveScene.OnDisposeEvent">
+            <summary>
+            このシーンが破棄されたときに発行されるイベント。発行されると同時に完了します。
+            </summary>
+        </member>
+        <member name="M:Altseed.Reactive.Object.ReactiveScene.AddDisposable(System.IDisposable)">
+            <summary>
+            このオブジェクトが破棄されるときに一緒に破棄されるインスタンスを設定します
+            </summary>
+            <param name="resource">このオブジェクトが破棄されるときに一緒に破棄されるインスタンス。</param>
+        </member>
+        <member name="T:Altseed.Reactive.Object.ReactiveTextObject2D">
+            <summary>
+            特定のタイミングでイベントを発行する2Dテキストオブジェクト。
+            </summary>
+        </member>
+        <member name="P:Altseed.Reactive.Object.ReactiveTextObject2D.OnAddedEvent">
+            <summary>
+            レイヤーに登録されたときに発行されるイベント。オブジェクトが破棄されたとき完了します。
+            </summary>
+        </member>
+        <member name="P:Altseed.Reactive.Object.ReactiveTextObject2D.OnRemovedEvent">
+            <summary>
+            レイヤーから削除されたときに発行されるイベント。オブジェクトが破棄されたときに完了します。
+            </summary>
+        </member>
+        <member name="P:Altseed.Reactive.Object.ReactiveTextObject2D.OnUpdatedEvent">
+            <summary>
+            更新されたときに発行されるイベント。破棄されたとき完了します。
+            値として何個目のイベントかのインデックスが流れます。
+            </summary>
+        </member>
+        <member name="P:Altseed.Reactive.Object.ReactiveTextObject2D.OnDisposeEvent">
+            <summary>
+            破棄されたときに発行されるイベント。発行されると同時に完了します。
+            </summary>
+        </member>
+        <member name="M:Altseed.Reactive.Object.ReactiveTextObject2D.AddDisposable(System.IDisposable)">
+            <summary>
+            このオブジェクトが破棄されるときに一緒に破棄されるインスタンスを設定します
+            </summary>
+            <param name="resource">このオブジェクトが破棄されるときに一緒に破棄されるインスタンス。</param>
+        </member>
+        <member name="T:Altseed.Reactive.Object.ReactiveGeometryObject2D">
+            <summary>
+            特定のタイミングでイベントを発行する2Dテクスチャオブジェクト。
+            </summary>
+        </member>
+        <member name="P:Altseed.Reactive.Object.ReactiveGeometryObject2D.OnAddedEvent">
+            <summary>
+            レイヤーに登録されたときに発行されるイベント。オブジェクトが破棄されたとき完了します。
+            </summary>
+        </member>
+        <member name="P:Altseed.Reactive.Object.ReactiveGeometryObject2D.OnRemovedEvent">
+            <summary>
+            レイヤーから削除されたときに発行されるイベント。オブジェクトが破棄されたときに完了します。
+            </summary>
+        </member>
+        <member name="P:Altseed.Reactive.Object.ReactiveGeometryObject2D.OnUpdatedEvent">
+            <summary>
+            更新されたときに発行されるイベント。オブジェクトが破棄されたとき完了します。
+            値として何個目のイベントかのインデックスが流れます。
+            </summary>
+        </member>
+        <member name="P:Altseed.Reactive.Object.ReactiveGeometryObject2D.OnDisposeEvent">
+            <summary>
+            破棄されたときに発行されるイベント。オブジェクトが破棄されたとき完了します。
+            </summary>
+        </member>
+        <member name="M:Altseed.Reactive.Object.ReactiveGeometryObject2D.AddDisposable(System.IDisposable)">
+            <summary>
+            このオブジェクトが破棄されるときに一緒に破棄されるインスタンスを設定します
+            </summary>
+            <param name="resource">このオブジェクトが破棄されるときに一緒に破棄されるインスタンス。</param>
+        </member>
+        <member name="T:Altseed.Reactive.Object.ReactiveTextureObject2D">
+            <summary>
+            特定のタイミングでイベントを発行する2Dテクスチャオブジェクト。
+            </summary>
+        </member>
+        <member name="P:Altseed.Reactive.Object.ReactiveTextureObject2D.OnAddedEvent">
+            <summary>
+            レイヤーに登録されたときに発行されるイベント。オブジェクトが破棄されたとき完了します。
+            </summary>
+        </member>
+        <member name="P:Altseed.Reactive.Object.ReactiveTextureObject2D.OnRemovedEvent">
+            <summary>
+            レイヤーから削除されたときに発行されるイベント。オブジェクトが破棄されたときに完了します。
+            </summary>
+        </member>
+        <member name="P:Altseed.Reactive.Object.ReactiveTextureObject2D.OnUpdatedEvent">
+            <summary>
+            更新されたときに発行されるイベント。オブジェクトが破棄されたとき完了します。
+            値として何個目のイベントかのインデックスが流れます。
+            </summary>
+        </member>
+        <member name="P:Altseed.Reactive.Object.ReactiveTextureObject2D.OnDisposeEvent">
+            <summary>
+            破棄されたときに発行されるイベント。オブジェクトが破棄されたとき完了します。
+            </summary>
+        </member>
+        <member name="M:Altseed.Reactive.Object.ReactiveTextureObject2D.AddDisposable(System.IDisposable)">
+            <summary>
+            このオブジェクトが破棄されるときに一緒に破棄されるインスタンスを設定します
+            </summary>
+            <param name="resource">このオブジェクトが破棄されるときに一緒に破棄されるインスタンス。</param>
+        </member>
+    </members>
+</doc>

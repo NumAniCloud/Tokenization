@@ -1,0 +1,227 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Altseed.Reactive.Easing</name>
+    </assembly>
+    <members>
+        <member name="T:Altseed.Reactive.Easings.EasingComponent">
+            <summary>
+            イージングによるアニメーションを2Dオブジェクトに適用するコンポーネントを提供します。
+            </summary>
+        </member>
+        <member name="M:Altseed.Reactive.Easings.EasingComponent.#ctor(Altseed.Reactive.Easings.IEasing,System.Action{asd.Object2D,System.Single},System.Int32,System.Single,System.Single)">
+            <summary>
+            任意のイージング設定とアニメーションする値を実際に適用するデリゲートを指定して、EasingComponent の新しいインスタンスを初期化します。
+            </summary>
+            <param name="easing">アニメーションに用いるイージング設定。</param>
+            <param name="application">アニメーションする値を実際にオブジェクトに適用するデリゲート。この引数に渡すために <see cref="M:Altseed.Reactive.Easings.EasingComponent.ApplyPositionX(asd.Object2D,System.Single)"/> 静的メソッドなども用意されています。</param>
+            <param name="maxFrame">アニメーションにかける時間。</param>
+            <param name="start">アニメーションの始点。</param>
+            <param name="goal">アニメーションの終点。</param>
+        </member>
+        <member name="M:Altseed.Reactive.Easings.EasingComponent.ApplyPositionX(asd.Object2D,System.Single)">
+            <summary>
+            アニメーションの値をオブジェクトのX座標に適用する関数。EasingComponent のコンストラクタに引数として渡して使用します。
+            </summary>
+            <param name="obj"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:Altseed.Reactive.Easings.EasingComponent.ApplyPositionY(asd.Object2D,System.Single)">
+            <summary>
+            アニメーションの値をオブジェクトのY座標に適用する関数。EasingComponent のコンストラクタに引数として渡して使用します。
+            </summary>
+            <param name="obj"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:Altseed.Reactive.Easings.EasingComponent.ApplyColorAlpha(asd.Object2D,System.Single)">
+            <summary>
+            アニメーションの値をオブジェクトの不透明度に適用する関数。EasingComponent のコンストラクタに引数として渡して使用します。
+            </summary>
+            <param name="obj"></param>
+            <param name="value"></param>
+        </member>
+        <member name="T:Altseed.Reactive.Easings.EasingExtention">
+            <summary>
+            イージング機能に対する拡張メソッドを公開します。
+            </summary>
+        </member>
+        <member name="M:Altseed.Reactive.Easings.EasingExtention.GetGeneralValue(Altseed.Reactive.Easings.IEasing,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            指定した条件におけるイージングの値を取得します。
+            </summary>
+            <param name="easing">イージング クラス。</param>
+            <param name="time">イージング中における現在の時間。</param>
+            <param name="fullDuration">イージング開始から終了までの全体の時間。</param>
+            <param name="start">イージングの始点の値。</param>
+            <param name="goal">イージングの終点の値。</param>
+            <returns></returns>
+        </member>
+        <member name="M:Altseed.Reactive.Easings.EasingExtention.CubicEasingsNormalValue(System.IObservable{System.Single},Altseed.Reactive.Easings.Library.CubicEasing.Speed,Altseed.Reactive.Easings.Library.CubicEasing.Speed)">
+            <summary>
+            指定したストリームを、三次曲線によってアニメーションする値が通知されるストリームに射影します。
+            </summary>
+            <param name="timeSource">区間[0,1]の現在の時間が通知されるストリーム。</param>
+            <param name="startSpeed">始点の速度。</param>
+            <param name="endSpeed">終点の速度。</param>
+            <returns>三次曲線によってアニメーションする正規化された値が通知されるストリーム。</returns>
+        </member>
+        <member name="M:Altseed.Reactive.Easings.EasingExtention.CubicEasingsNormalValue(System.IObservable{System.Single})">
+            <summary>
+            指定したストリームを、三次曲線によってアニメーションする値が通知されるストリームに射影します。
+            </summary>
+            <param name="timeSource">区間[0,1]の現在の時間が通知されるストリーム。</param>
+            <returns></returns>
+        </member>
+        <member name="M:Altseed.Reactive.Easings.EasingExtention.LinearEasingNormalValue(System.IObservable{System.Single})">
+            <summary>
+            指定したストリームを、線形にアニメーションする値が通知されるストリームに射影します。
+            </summary>
+            <param name="timeSource">区間[0,1]の現在の時間が通知されるストリーム。</param>
+            <returns>線形にアニメーションする正規化された値が通知されるストリーム。</returns>
+        </member>
+        <member name="T:Altseed.Reactive.Easings.EasingManagerComponent">
+            <summary>
+            複数のアニメーションを持つオブジェクトを自然にアニメーションさせる機能を提供します。
+            </summary>
+        </member>
+        <member name="T:Altseed.Reactive.Easings.EasingManagerComponent.Setting">
+            <summary>
+            アニメーションの設定を表します。
+            </summary>
+        </member>
+        <member name="P:Altseed.Reactive.Easings.EasingManagerComponent.EasingSettings">
+            <summary>
+            アニメーションの設定を保持するディクショナリ。
+            </summary>
+        </member>
+        <member name="P:Altseed.Reactive.Easings.EasingManagerComponent.NewValue">
+            <summary>
+            アニメーションの新しい値が通知されるプロバイダー。
+            </summary>
+        </member>
+        <member name="M:Altseed.Reactive.Easings.EasingManagerComponent.#ctor(System.Single)">
+            <summary>
+            初期値を指定して、EasingManagerComponent の新しいインスタンスを初期化します。
+            </summary>
+            <param name="initialValue">アニメーションの初期値。</param>
+        </member>
+        <member name="M:Altseed.Reactive.Easings.EasingManagerComponent.Ease(System.String)">
+            <summary>
+            ディクショナリに登録されたアニメーションを実行します。
+            </summary>
+            <param name="key">実行するアニメーションのキー。</param>
+        </member>
+        <member name="T:Altseed.Reactive.Easings.EasingNormalValueObservable">
+            <summary>
+            イージングの0~1の値が発行される IObservable の実装を提供します。
+            </summary>
+        </member>
+        <member name="M:Altseed.Reactive.Easings.EasingNormalValueObservable.#ctor(System.IObservable{System.Single},Altseed.Reactive.Easings.IEasing)">
+            <summary>
+            時間を表すプロバイダーとアニメーション内容を表すイージングを指定して、このプロバイダーを初期化します。
+            </summary>
+            <param name="source">[0,1]間の現在の時間が通知されるプロバイダー。</param>
+            <param name="easing">アニメーション内容を表すイージング関数。</param>
+        </member>
+        <member name="M:Altseed.Reactive.Easings.EasingNormalValueObservable.Subscribe(System.IObserver{System.Single})">
+            <summary>
+            オブザーバーが通知を受け取ることをプロバイダーに通知します。
+            </summary>
+            <param name="observer">通知を受け取るオブジェクト。</param>
+            <returns>プロバイダーが通知の送信を完了する前に、オブザーバーが通知の受信を停止できるインターフェイスへの参照。</returns>
+        </member>
+        <member name="M:Altseed.Reactive.Easings.EasingNormalValueObservable.Generalize(System.Single,System.Single,System.Single)">
+            <summary>
+            [0,1]の時間内に[0,1]の範囲でアニメーションする値を、任意の時間内に任意の範囲でアニメーションする値に射影します。
+            </summary>
+            <param name="fullDuration">アニメーション全体が要する時間。</param>
+            <param name="start">アニメーション始点の値。</param>
+            <param name="goal">アニメーション終点の値。</param>
+            <returns></returns>
+        </member>
+        <member name="T:Altseed.Reactive.Easings.IEasing">
+            <summary>
+            イージングによってアニメーションする値を取得する機能を公開します。
+            </summary>
+        </member>
+        <member name="M:Altseed.Reactive.Easings.IEasing.GetNormalValue(System.Single)">
+            <summary>
+            指定した時間における[0,1]のイージングの値を取得します。
+            </summary>
+            <param name="time">イージング中の地点を表す時間。[0,1]の範囲内である必要があります。</param>
+            <returns>指定した時間における[0,1]のイージングの値。</returns>
+        </member>
+        <member name="T:Altseed.Reactive.Easings.Library.BounceEasing">
+            <summary>
+            終点においてバウンドするアニメーションを提供します。
+            </summary>
+        </member>
+        <member name="M:Altseed.Reactive.Easings.Library.BounceEasing.#ctor(System.Single,System.Single)">
+            <summary>
+            パラメータを指定して、BounceEasing の新しいインスタンスを初期化します。
+            </summary>
+            <param name="speed"></param>
+            <param name="elasticity"></param>
+        </member>
+        <member name="M:Altseed.Reactive.Easings.Library.BounceEasing.GetNormalValue(System.Single)">
+            <summary>
+            指定した時間における0~1のイージングの値を取得します。
+            </summary>
+            <param name="time">イージング中の地点を表す時間。0~1である必要があります。</param>
+            <returns>指定した時間における0~1のイージングの値。</returns>
+        </member>
+        <member name="T:Altseed.Reactive.Easings.Library.CubicEasing">
+            <summary>
+            三次曲線によるイージングを提供します。
+            </summary>
+        </member>
+        <member name="T:Altseed.Reactive.Easings.Library.CubicEasing.Speed">
+            <summary>
+            イージングの開始・終了地点での速さを指定するための列挙体。
+            </summary>
+        </member>
+        <member name="M:Altseed.Reactive.Easings.Library.CubicEasing.#ctor(Altseed.Reactive.Easings.Library.CubicEasing.Speed,Altseed.Reactive.Easings.Library.CubicEasing.Speed)">
+            <summary>
+            始点と終点の速度を指定して、CubicEasing の新しいインスタンスを初期化します。
+            </summary>
+            <param name="startSpeed">アニメーション始点の速度。</param>
+            <param name="endSpeed">アニメーション終点の速度。</param>
+        </member>
+        <member name="M:Altseed.Reactive.Easings.Library.CubicEasing.#ctor">
+            <summary>
+            デフォルトの設定を利用して、CubicEasing の新しいインスタンスを初期化します。
+            </summary>
+        </member>
+        <member name="M:Altseed.Reactive.Easings.Library.CubicEasing.GetNormalValue(System.Single)">
+            <summary>
+            指定した時間における0~1のイージングの値を取得します。
+            </summary>
+            <param name="time">イージング中の地点を表す時間。0~1である必要があります。</param>
+            <returns></returns>
+        </member>
+        <member name="T:Altseed.Reactive.Easings.Library.LinearEasing">
+            <summary>
+            線形にアニメーションするイージングを提供します。
+            </summary>
+        </member>
+        <member name="M:Altseed.Reactive.Easings.Library.LinearEasing.GetNormalValue(System.Single)">
+            <summary>
+            指定した時間における0~1のイージングの値を取得します。
+            </summary>
+            <param name="time">イージング中の地点を表す時間。0~1である必要があります。</param>
+            <returns></returns>
+        </member>
+        <member name="T:Altseed.Reactive.Easings.Library.NoMotionEasing">
+            <summary>
+            実行した瞬間に終点に到達するアニメーションを提供します。
+            </summary>
+        </member>
+        <member name="M:Altseed.Reactive.Easings.Library.NoMotionEasing.GetNormalValue(System.Single)">
+            <summary>
+            指定した時間における0~1のイージングの値を取得します。
+            </summary>
+            <param name="time">イージング中の地点を表す時間。0~1である必要があります。</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

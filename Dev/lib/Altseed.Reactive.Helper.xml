@@ -1,0 +1,107 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Altseed.Reactive.Helper</name>
+    </assembly>
+    <members>
+        <member name="T:Altseed.Reactive.CenterPosition">
+            <summary>
+            描画原点を指定するための列挙体。左上から右下まで９箇所を指定できます。
+            </summary>
+        </member>
+        <member name="M:Altseed.Reactive.CenterPositionHelper.SetCenterPosition(asd.TextureObject2D,Altseed.Reactive.CenterPosition)">
+            <summary>
+            TextureObject2Dの描画原点を、指定した画像上の位置に変更します。
+            </summary>
+            <param name="obj">描画原点を指定する対象のオブジェクト。</param>
+            <param name="centerPosition">画像上のどの位置を描画原点に指定するか。</param>
+        </member>
+        <member name="M:Altseed.Reactive.CenterPositionHelper.SetCenterPosition(asd.TextObject2D,Altseed.Reactive.CenterPosition)">
+            <summary>
+            TextObject2Dの描画原点を、指定した文字列上の位置に変更します。
+            </summary>
+            <param name="obj">描画原点を指定する対象のオブジェクト。</param>
+            <param name="centerPosition">文字列上のどの位置を描画原点に指定するか。</param>
+        </member>
+        <member name="M:Altseed.Reactive.Helper.LinqHelper.Total(System.IObservable{System.Single})">
+            <summary>
+            流れてきた値を累計して後続に流します。
+            </summary>
+            <param name="source">累計される値のシーケンス。</param>
+            <returns></returns>
+        </member>
+        <member name="M:Altseed.Reactive.Helper.LinqHelper.Total(System.IObservable{System.Int64})">
+            <summary>
+            流れてきた値を累計して後続に流します。
+            </summary>
+            <param name="source">累計される値のシーケンス。</param>
+            <returns></returns>
+        </member>
+        <member name="M:Altseed.Reactive.Helper.LinqHelper.SelectCorourine``2(System.IObservable{``0},System.Collections.Generic.IEnumerator{``1})">
+            <summary>
+            シーケンスをコルーチンの呼び出しにマッピングします。イベントの発行がコルーチンを１回進めます。
+            </summary>
+            <typeparam name="T">シーケンスの型。</typeparam>
+            <typeparam name="U">コルーチンの返す型。</typeparam>
+            <param name="source">元となるシーケンス。</param>
+            <param name="coroutine">シーケンスにマップするコルーチン。</param>
+            <returns>コルーチンにマッピングされたシーケンス。</returns>
+        </member>
+        <member name="M:Altseed.Reactive.Helper.LinqHelper.ShortWiggle``1(System.IObservable{``0},asd.Vector2DF,asd.Vector2DF,asd.Vector2DF,System.Int32)">
+            <summary>
+            シーケンスを時間単位として、時間によって振動するベクトルの値が流れるシーケンスに変換します。
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="source">値が通ることで時間を進めるシーケンス。</param>
+            <param name="center">振動の中心点。</param>
+            <param name="amplitude">軸ごとの振幅。</param>
+            <param name="frequency">軸ごとの周波数。</param>
+            <param name="count">振動が終了するまでの時間。</param>
+            <returns></returns>
+        </member>
+        <member name="M:Altseed.Reactive.Helper.LinqHelper.Wiggle``1(System.IObservable{``0},asd.Vector2DF,asd.Vector2DF,asd.Vector2DF)">
+            <summary>
+            シーケンスを時間単位として、時間によって振動し続けるベクトルの値が流れるシーケンスに変換します。
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="source">値が通ることで時間を進めるシーケンス。</param>
+            <param name="center">振動の中心点。</param>
+            <param name="amplitude">軸ごとの振幅。</param>
+            <param name="frequency">軸ごとの周波数。</param>
+            <returns></returns>
+        </member>
+        <member name="M:Altseed.Reactive.Helper.LinqHelper.IndexOf``1(System.Collections.Generic.IEnumerable{``0},System.Predicate{``0})">
+            <summary>
+            コレクションの要素から指定した条件を最初に満たすオブジェクトを検索し、そのインデックスを返します。
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="source">検索対象となるコレクション。</param>
+            <param name="predicate">検索する要素の条件を定義するデリゲート。</param>
+            <returns></returns>
+        </member>
+        <member name="M:Altseed.Reactive.Helper.LinqHelper.Concat(System.Collections.Generic.IEnumerable{System.Char})">
+            <summary>
+            指定した文字のコレクションを連結してひとつの文字列として返します。
+            </summary>
+            <param name="source">文字のコレクション。</param>
+            <returns>連結した文字列。</returns>
+        </member>
+        <member name="T:Altseed.Reactive.UpdatableSynchronizationContext">
+            <summary>
+            送られた継続処理を Update が呼ばれるたびに同一のスレッド上で実行する同期コンテキスト。
+            </summary>
+        </member>
+        <member name="M:Altseed.Reactive.UpdatableSynchronizationContext.Post(System.Threading.SendOrPostCallback,System.Object)">
+            <summary>
+            この同期コンテキストに継続処理を送ります。
+            </summary>
+            <param name="d">継続処理。</param>
+            <param name="state"></param>
+        </member>
+        <member name="M:Altseed.Reactive.UpdatableSynchronizationContext.Update">
+            <summary>
+            送られてきた継続処理を実行します。アプリケーションの実行中に定期的に呼び出すことが推奨されます。
+            </summary>
+        </member>
+    </members>
+</doc>

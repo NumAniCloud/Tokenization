@@ -1,0 +1,268 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Altseed.Reactive.Input</name>
+    </assembly>
+    <members>
+        <member name="T:Altseed.Reactive.Input.BundleController`1">
+            <summary>
+            複数のコントローラ入力を統合するコントローラ。
+            </summary>
+            <typeparam name="TAbstractKey">操作を表す型。</typeparam>
+        </member>
+        <member name="P:Altseed.Reactive.Input.BundleController`1.Keys">
+            <summary>
+            なんらかの入力に対応付けられている操作のコレクションを取得します。
+            </summary>
+        </member>
+        <member name="P:Altseed.Reactive.Input.BundleController`1.IsChildrenUpdated">
+            <summary>
+            このコントローラに登録されているコントローラを自動で更新するかどうかを表す真偽値。
+            </summary>
+        </member>
+        <member name="M:Altseed.Reactive.Input.BundleController`1.#ctor(Altseed.Reactive.Input.Controller{`0}[])">
+            <summary>
+            コンストラクタ
+            </summary>
+        </member>
+        <member name="M:Altseed.Reactive.Input.BundleController`1.AddController(Altseed.Reactive.Input.Controller{`0})">
+            <summary>
+            このコントローラに指定したコントローラを統合します。
+            </summary>
+            <param name="controller">このコントローラに統合するコントローラ。</param>
+        </member>
+        <member name="M:Altseed.Reactive.Input.BundleController`1.GetState(`0)">
+            <summary>
+            指定した操作に対応する入力の状態を取得します。
+            </summary>
+            <param name="key">入力の状態を取得する操作。</param>
+            <returns></returns>
+        </member>
+        <member name="M:Altseed.Reactive.Input.BundleController`1.Update">
+            <summary>
+            コントローラの状態を更新します。
+            </summary>
+        </member>
+        <member name="T:Altseed.Reactive.Input.InputState">
+            <summary>
+            コントローラのボタンの状態を表す列挙体。
+            </summary>
+        </member>
+        <member name="F:Altseed.Reactive.Input.InputState.Push">
+            <summary>
+            ボタンが押された瞬間を表します。
+            </summary>
+        </member>
+        <member name="F:Altseed.Reactive.Input.InputState.Release">
+            <summary>
+            ボタンが離された瞬間を表します。
+            </summary>
+        </member>
+        <member name="F:Altseed.Reactive.Input.InputState.Hold">
+            <summary>
+            ボタンが押されたままになっている状態を表します。
+            </summary>
+        </member>
+        <member name="F:Altseed.Reactive.Input.InputState.Free">
+            <summary>
+            ボタンが離されている状態を表します。
+            </summary>
+        </member>
+        <member name="T:Altseed.Reactive.Input.Controller`1">
+            <summary>
+            実際の入力を操作と対応付けるクラス。
+            </summary>
+            <typeparam name="TControl">操作を表す型。</typeparam>
+        </member>
+        <member name="P:Altseed.Reactive.Input.Controller`1.Keys">
+            <summary>
+            なんらかの入力に対応付けられている操作のコレクションを取得します。
+            </summary>
+        </member>
+        <member name="M:Altseed.Reactive.Input.Controller`1.GetState(`0)">
+            <summary>
+            指定した操作に対応する入力の状態を取得します。
+            </summary>
+            <param name="key">入力の状態を取得する操作。</param>
+            <returns></returns>
+        </member>
+        <member name="M:Altseed.Reactive.Input.Controller`1.Update">
+            <summary>
+            コントローラの状態を更新します。
+            </summary>
+        </member>
+        <member name="M:Altseed.Reactive.Input.ControllerHelper.ObserveKeyState``2(System.IObservable{``0},Altseed.Reactive.Input.Controller{``1},``1,Altseed.Reactive.Input.InputState)">
+            <summary>
+            ストリームを、指定したコントローラーの状態に基いてフィルターします。
+            </summary>
+            <typeparam name="T">元となるストリームの型。</typeparam>
+            <typeparam name="TAbstractKey">操作の型。</typeparam>
+            <param name="source">元となるストリーム。</param>
+            <param name="controller">チェックするコントローラー。</param>
+            <param name="key">チェックする操作。</param>
+            <param name="state">フィルター条件となる操作の状態。</param>
+            <returns></returns>
+        </member>
+        <member name="M:Altseed.Reactive.Input.ControllerHelper.GetInputDirection``1(Altseed.Reactive.Input.Controller{``0},``0,``0,``0,``0)">
+            <summary>
+            コントローラの方向キーが押されている向きをベクトルとして取得します。返すベクトルは正規化されません。
+            </summary>
+            <typeparam name="TControl"></typeparam>
+            <param name="controller">コントローラ。</param>
+            <param name="left">左入力を表す操作。</param>
+            <param name="right">右入力を表す操作。</param>
+            <param name="up">上入力を表す操作。</param>
+            <param name="down">下入力を表す操作。</param>
+            <returns></returns>
+        </member>
+        <member name="T:Altseed.Reactive.Input.AxisDirection">
+            <summary>
+            ゲームパッドの軸を倒す方向を表す列挙体。
+            </summary>
+        </member>
+        <member name="F:Altseed.Reactive.Input.AxisDirection.Negative">
+            <summary>
+            正の方向に倒すことを表します。
+            </summary>
+        </member>
+        <member name="F:Altseed.Reactive.Input.AxisDirection.Positive">
+            <summary>
+            負の方向に倒すことを表します。
+            </summary>
+        </member>
+        <member name="T:Altseed.Reactive.Input.JoystickController`1">
+            <summary>
+            ジョイスティックからの入力を操作と対応付けるコントローラ クラス。
+            </summary>
+            <typeparam name="TAbstractKey">操作を表す型。</typeparam>
+            <remarks>スティック入力の加減を取得する用途には、Altseedのジョイスティック機能を直接お使いください。</remarks>
+        </member>
+        <member name="P:Altseed.Reactive.Input.JoystickController`1.Keys">
+            <summary>
+            なんらかの入力に対応付けられている操作のコレクションを取得します。
+            </summary>
+        </member>
+        <member name="M:Altseed.Reactive.Input.JoystickController`1.#ctor(System.Int32)">
+            <summary>
+            コンストラクタ
+            </summary>
+            <param name="index"></param>
+        </member>
+        <member name="M:Altseed.Reactive.Input.JoystickController`1.BindButton(System.Int32,`0)">
+            <summary>
+            ジョイスティックのボタンに操作を対応付けます。
+            </summary>
+            <param name="buttonIndex">操作に対応付けるボタンの番号。</param>
+            <param name="abstractKey">ボタンに対応付ける操作。</param>
+        </member>
+        <member name="M:Altseed.Reactive.Input.JoystickController`1.BindAxis(System.Int32,Altseed.Reactive.Input.AxisDirection,`0)">
+            <summary>
+            ジョイスティックのスティックに操作を対応付けます。
+            </summary>
+            <param name="axisIndex">操作に対応付ける軸の番号。通常 0 がX軸を、1 がY軸を表します。</param>
+            <param name="direction">スティックをどちらに倒した場合の入力を対応付けるか。</param>
+            <param name="abstractKey">スティックの入力に対応付ける操作。</param>
+        </member>
+        <member name="M:Altseed.Reactive.Input.JoystickController`1.BindDirection(`0,`0,`0,`0)">
+            <summary>
+            ジョイスティックのスティックの上下左右の入力に操作を対応付けます。
+            </summary>
+            <param name="left">左入力に対応付ける操作。</param>
+            <param name="right">右入力に対応付ける操作。</param>
+            <param name="up">上入力に対応付ける操作。</param>
+            <param name="down">下入力に対応付ける操作。</param>
+        </member>
+        <member name="M:Altseed.Reactive.Input.JoystickController`1.GetState(`0)">
+            <summary>
+            指定した操作に対応する入力の状態を取得します。
+            </summary>
+            <param name="key">入力の状態を取得する操作。</param>
+            <returns></returns>
+        </member>
+        <member name="M:Altseed.Reactive.Input.JoystickController`1.Update">
+            <summary>
+            コントローラの状態を更新します。
+            </summary>
+        </member>
+        <member name="T:Altseed.Reactive.Input.KeyboardController`1">
+            <summary>
+            キーボードからの入力を操作と対応付けるコントローラ クラス。
+            </summary>
+            <typeparam name="TControl">操作を表す型。</typeparam>
+        </member>
+        <member name="P:Altseed.Reactive.Input.KeyboardController`1.Keys">
+            <summary>
+            なんらかの入力に対応付けられている操作のコレクションを取得します。
+            </summary>
+        </member>
+        <member name="M:Altseed.Reactive.Input.KeyboardController`1.#ctor">
+            <summary>
+            コンストラクタ
+            </summary>
+        </member>
+        <member name="M:Altseed.Reactive.Input.KeyboardController`1.BindKey(asd.Keys,`0)">
+            <summary>
+            キーボードのキーに操作を対応付けます。
+            </summary>
+            <param name="key">操作に対応付けるキー。</param>
+            <param name="abstractKey">キーに対応付ける操作。</param>
+        </member>
+        <member name="M:Altseed.Reactive.Input.KeyboardController`1.BindDirection(`0,`0,`0,`0)">
+            <summary>
+            十字キーの入力に操作を対応付けます。
+            </summary>
+            <param name="left">左キーに対応付ける操作。</param>
+            <param name="right">右キーに対応付ける操作。</param>
+            <param name="up">上キーに対応付ける操作。</param>
+            <param name="down">下キーに対応付ける操作。</param>
+        </member>
+        <member name="M:Altseed.Reactive.Input.KeyboardController`1.GetState(`0)">
+            <summary>
+            指定した操作に対応する入力の状態を取得します。
+            </summary>
+            <param name="key">入力の状態を取得する操作。</param>
+            <returns></returns>
+        </member>
+        <member name="T:Altseed.Reactive.Input.SteppingController`1">
+            <summary>
+            キーの押しっぱなしを連続入力とみなすコントローラ。
+            </summary>
+            <typeparam name="TAbstract">操作を表す型。</typeparam>
+        </member>
+        <member name="P:Altseed.Reactive.Input.SteppingController`1.Keys">
+            <summary>
+            なんらかの入力に対応付けられている操作のコレクションを取得します。
+            </summary>
+        </member>
+        <member name="P:Altseed.Reactive.Input.SteppingController`1.IsChildUpdated">
+            <summary>
+            このコントローラに登録されているコントローラを自動で更新するかどうかを表す真偽値。
+            </summary>
+        </member>
+        <member name="M:Altseed.Reactive.Input.SteppingController`1.#ctor(Altseed.Reactive.Input.Controller{`0})">
+            <summary>
+            コンストラクタ
+            </summary>
+        </member>
+        <member name="M:Altseed.Reactive.Input.SteppingController`1.EnableSteppingHold(`0,System.Int32,System.Int32)">
+            <summary>
+            指定した操作が押しっぱなしにされたときに連続入力とみなすように設定します。
+            </summary>
+            <param name="key">押しっぱなしを連続入力とみなす操作。</param>
+            <param name="startTime">押しっぱなしと判定されるまでのフレーム数。</param>
+            <param name="span">連続入力の間隔(フレーム)。</param>
+        </member>
+        <member name="M:Altseed.Reactive.Input.SteppingController`1.GetState(`0)">
+            <summary>
+            指定した操作に対応する入力の状態を取得します。
+            </summary>
+            <param name="key">入力の状態を取得する操作。</param>
+            <returns></returns>
+        </member>
+        <member name="M:Altseed.Reactive.Input.SteppingController`1.Update">
+            <summary>
+            コントローラの状態を更新します。
+            </summary>
+        </member>
+    </members>
+</doc>
