@@ -91,7 +91,10 @@
   <ItemGroup>
     <Compile Include="BattleController.cs" />
     <Compile Include="Entry\EntryView.cs" />
+    <Compile Include="Math\CoordinateConverter.cs" />
+    <Compile Include="Math\MathHelper.cs" />
     <Compile Include="Objects\BattleTokenView.cs" />
+    <Compile Include="Objects\ProfileCardView.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

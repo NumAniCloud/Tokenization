@@ -19,6 +19,6 @@ namespace Tokenization.Model.Objects.Implementations
 
         public string Image => "Textures/Token1.png";
 
-        public string ProfileImage => "";
+        public string ProfileImage => "Textures/SampleProfileGraphic.png";
     }
 }

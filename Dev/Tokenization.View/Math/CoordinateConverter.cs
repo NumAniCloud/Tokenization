@@ -4,7 +4,7 @@ namespace Tokenization.View
 {
     class ModelToViewCoordinateConverter
     {
-        private readonly float PixelPerMeter = 20;
+        private readonly float PixelPerMeter = 300;
 
         public Vector2DF Convert(Vector2DF source)
         {

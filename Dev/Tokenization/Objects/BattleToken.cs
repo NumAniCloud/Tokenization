@@ -13,11 +13,13 @@ namespace Tokenization.Model.Objects
         public IBattleTokenProperty Property { get; private set; }
         public Vector2 Position { get; set; }
         public bool AlreadyActed { get; set; }
+        public Skill[] Skills { get; set; }
 
-        public BattleToken(int index, IBattleTokenProperty property)
+        public BattleToken(int index, IBattleTokenProperty property, Skill[] skillDb)
         {
             Index = index;
             Property = property;
+            Skills = skillDb.Join(Property.Skills, o => o.Property.Id, i => i, (o, i) => o).ToArray();
         }
     }
 }
